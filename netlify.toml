@@ -1,7 +1,8 @@
 [build]
   base = "paper-rings-inc"
   command = "npm run build"
-  publish = ".next"
+  # This matches the structure shown in your successful log
+  publish = ".next/server/app"
 
-[functions]
-  included_files = ["public/**"]
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
