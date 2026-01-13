@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-start-rgb: 0, 0, 0; /* Pure black to match logo */
+  --background-end-rgb: 0, 0, 0;   /* Pure black */
+  --primary-accent-blue: 59, 130, 246;    /* Deep blue - rgb(59, 130, 246) */
+  --primary-accent-cyan: 34, 211, 238;    /* Cyan - rgb(34, 211, 238) */
+  --primary-accent-green: 74, 222, 128;   /* Green - rgb(74, 222, 128) */
+  --primary-accent-yellow: 250, 204, 21;  /* Yellow - rgb(250, 204, 21) */
+  --primary-accent-orange: 251, 146, 60;  /* Orange - rgb(251, 146, 60) */
+  --primary-accent-red: 239, 68, 68;      /* Red - rgb(239, 68, 68) */
+  --gradient-start: 59, 130, 246;         /* Blue for gradients */
+  --gradient-end: 239, 68, 68;            /* Red for gradients */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+  @apply antialiased;
+}
+
+/* Glassmorphism effect for Navbar */
+.glassmorphism {
+  background: rgba(0, 0, 0, 0.4); /* Dark with transparency */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2); /* Subtle border with blue accent */
+}
+
+/* Glowing effect for AI elements - rainbow gradient glow */
+.glowing-ai {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(34, 211, 238, 0.4), 0 0 60px rgba(74, 222, 128, 0.3);
+  animation: glow-rainbow 2s infinite alternate;
+}
+
+@keyframes glow-rainbow {
+  0% {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(34, 211, 238, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.5), 0 0 40px rgba(250, 204, 21, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(251, 146, 60, 0.5), 0 0 50px rgba(239, 68, 68, 0.3);
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
