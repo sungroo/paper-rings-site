@@ -1,9 +1,7 @@
 [build]
-  # Tell Netlify to enter your subfolder
   base = "paper-rings-inc"
-  
-  # The command to generate the .next folder
   command = "npm run build"
-  
-  # The folder to show the public (relative to paper-rings-inc)
   publish = ".next"
+
+[functions]
+  included_files = ["public/**"]
