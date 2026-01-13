@@ -1,12 +1,6 @@
 [build]
-  # Tell Netlify to enter your subfolder
   base = "paper-rings-inc"
-  
-  # The command to generate the build
   command = "npm run build"
-  
-  # Point to the standard .next folder
-  # The plugin will handle the /server/app part automatically
   publish = ".next"
 
 [[plugins]]
