@@ -1,13 +1,9 @@
 [build]
-  # Tell Netlify to enter your subfolder first
+  # Tell Netlify to enter your subfolder
   base = "paper-rings-inc"
   
   # The command to generate the .next folder
   command = "npm run build"
   
-  # The folder to show the public (relative to the base)
+  # The folder to show the public (relative to paper-rings-inc)
   publish = ".next"
-
-[[plugins]]
-  # This plugin is required for Next.js to work correctly on Netlify
-  package = "@netlify/plugin-nextjs"
