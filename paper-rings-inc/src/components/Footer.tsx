@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Paper Rings</h3>
+            <h3 className="text-xl font-bold mb-4">Paper Rings Inc.</h3>
             <p className="text-sm">
               Digitizing operations for SMEs in Canada and the US since 2016.
               <br />
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-slate-700 mt-8 pt-6 text-center text-sm">
-          &copy; {currentYear} Paper Rings All rights reserved.
+          &copy; {currentYear} Paper Rings Inc. All rights reserved.
         </div>
       </div>
     </footer>
