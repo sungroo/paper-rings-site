@@ -11,6 +11,8 @@ export default function ContactUsPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    e.stopPropagation(); // Prevents the browser from refreshing
+    
     setIsSubmitting(true);
     setSubmitMessage('');
   
@@ -18,9 +20,9 @@ export default function ContactUsPage() {
     const formData = new FormData(form);
   
     // --- LOCAL DEVELOPMENT SIMULATION ---
-    if (process.env.NODE_ENV === 'development') {
+    // Only run simulation if specifically on localhost
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
       setTimeout(() => {
-        console.log('Local submission:', Object.fromEntries(formData));
         setSubmitMessage('Thank you! (Local Simulation)');
         setIsSubmitting(false);
         form.reset();
@@ -30,16 +32,21 @@ export default function ContactUsPage() {
   
     // --- NETLIFY PRODUCTION SUBMISSION ---
     try {
-      await fetch("/", {
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         // @ts-ignore
         body: new URLSearchParams(formData).toString(),
       });
-      
-      setSubmitMessage('Thank you! Your message has been sent successfully.');
-      form.reset();
+  
+      if (response.ok) {
+        setSubmitMessage('Thank you! Your message has been sent successfully.');
+        form.reset();
+      } else {
+        throw new Error('Network response was not ok');
+      }
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitMessage('Oops! There was an error sending your message.');
     } finally {
       setIsSubmitting(false);
@@ -163,22 +170,16 @@ export default function ContactUsPage() {
               </div>
               <button
                 type="submit"
-                disabled={isDevelopment && isSubmitting}
+                disabled={isSubmitting}
                 className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isDevelopment && isSubmitting ? 'Sending...' : 'Send Message'}
+                >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
 
-              {isDevelopment && submitMessage && (
-                <div className="mt-4 p-3 rounded-md text-sm bg-green-800 text-green-200">
-                  {submitMessage}
-                </div>
-              )}
-
-              {isDevelopment && (
-                <div className="mt-4 p-3 rounded-md text-sm bg-blue-900 text-blue-200">
-                  <strong>Development Mode:</strong> Form submissions are simulated locally. When deployed to Netlify, they will be stored in your dashboard.
-                </div>
+              {submitMessage && (
+              <div className="mt-4 p-3 rounded-md text-sm bg-green-800 text-green-200">
+                {submitMessage}
+              </div>
               )}
             </form>
           </motion.div>
