@@ -1,10 +1,14 @@
 [build]
+  base = "paper-rings-inc"
   command = "npm run build"
   publish = ".next"
 
-[build.environment]
-  NODE_VERSION = "20"
-  # This disables the form check via config as well
-  NETLIFY_NEXT_VERIFY_FORMS = "false"
-  # Optional: helps with stability in subdirectories
-  NETLIFY_NEXT_SKEW_PROTECTION = "true"
+[[redirects]]
+  from = "/"
+  to = "/paper-rings-inc/"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/paper-rings-inc/:splat"
+  status = 200
