@@ -1,7 +1,8 @@
 [build]
   base = "paper-rings-inc"
-  publish = ".next"
   command = "npm run build"
+  publish = ".next"
 
 [[plugins]]
+  # This tells Netlify to use the version we just installed via npm
   package = "@netlify/plugin-nextjs"
