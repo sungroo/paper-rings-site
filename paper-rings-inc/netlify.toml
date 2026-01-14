@@ -1,14 +1,7 @@
 [build]
   base = "paper-rings-inc"
-  command = "npm run build"
   publish = ".next"
+  command = "npm run build"
 
-[[redirects]]
-  from = "/"
-  to = "/paper-rings-inc/"
-  status = 200
-
-[[redirects]]
-  from = "/*"
-  to = "/paper-rings-inc/:splat"
-  status = 200
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
