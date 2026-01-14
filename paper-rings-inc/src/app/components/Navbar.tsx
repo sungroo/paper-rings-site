@@ -25,7 +25,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-3 flex-shrink-0">
               <div className="relative w-10 h-10 flex-shrink-0">
                 <Image
-                  src="/images/logo.svg"
+                  src="/images/logo.png"
                   alt="Paper Rings Inc. Logo"
                   fill
                   className="object-contain"
@@ -79,7 +79,7 @@ export default function Navbar() {
                     <Link href="/" className="flex items-center gap-2" onClick={() => close()}>
                       <div className="relative w-10 h-10 flex-shrink-0">
                         <Image
-                          src="/images/logo.svg"
+                          src="/images/logo.png"
                           alt="Paper Rings Inc. Logo"
                           fill
                           className="object-contain"
