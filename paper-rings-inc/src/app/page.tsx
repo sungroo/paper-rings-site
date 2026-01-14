@@ -23,7 +23,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mx-auto mt-6 max-w-3xl text-xl text-gray-300"
           >
-            Paper Rings Inc. is your trusted IT consulting partner, digitizing operations for businesses in Canada and the US since 2016.
+            Paper Rings is your trusted IT consulting partner, digitizing operations for businesses in Canada and the US since 2016.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

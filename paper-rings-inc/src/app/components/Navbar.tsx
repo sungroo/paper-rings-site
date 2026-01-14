@@ -26,13 +26,13 @@ export default function Navbar() {
               <div className="relative w-10 h-10 flex-shrink-0">
                 <Image
                   src="/images/logo.png"
-                  alt="Paper Rings Inc. Logo"
+                  alt="Paper Rings Logo"
                   fill
                   className="object-contain"
                   priority
                 />
               </div>
-              <span className="text-white text-lg font-semibold">Paper Rings Inc.</span>
+              <span className="text-white text-lg font-semibold">Paper Rings</span>
             </Link>
             <div className="hidden md:block ml-10">
               <div className="flex items-baseline space-x-4">
@@ -80,12 +80,12 @@ export default function Navbar() {
                       <div className="relative w-10 h-10 flex-shrink-0">
                         <Image
                           src="/images/logo.png"
-                          alt="Paper Rings Inc. Logo"
+                          alt="Paper Rings Logo"
                           fill
                           className="object-contain"
                         />
                       </div>
-                      <span className="text-white text-lg font-semibold">Paper Rings Inc.</span>
+                      <span className="text-white text-lg font-semibold">Paper Rings</span>
                     </Link>
                   </div>
                   <div className="-mr-2">

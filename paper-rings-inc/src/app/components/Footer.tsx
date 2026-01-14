@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-wrap justify-between items-start gap-8 mb-8">
           {/* Company Info */}
           <div className="flex-1 min-w-[250px]">
-            <h3 className="text-white text-lg font-semibold mb-3">Paper Rings Inc.</h3>
+            <h3 className="text-white text-lg font-semibold mb-3">Paper Rings</h3>
             <p className="text-sm leading-relaxed mb-4">
               Digitizing operations for SMEs in Canada and the US since 2016. We've successfully completed 57+ digital transformations, helping businesses thrive in the digital age.
             </p>
@@ -107,7 +107,7 @@ export default function Footer() {
         {/* Bottom Bar - Horizontal */}
         <div className="border-t border-slate-800 pt-6 flex flex-wrap justify-between items-center gap-4 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Paper Rings Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} Paper Rings All rights reserved.
           </p>
           <div className="flex flex-wrap gap-6">
             <a href="#" className="hover:text-white transition-colors">
