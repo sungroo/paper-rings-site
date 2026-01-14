@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Paper Rings - IT Consulting for SMEs',
+  title: 'Paper Rings Inc. - IT Consulting for SMEs',
   description: 'Helping SMEs in Canada and the US digitize operations since 2016. Expertise in Managed IT, Agentic-AI, and Canadian Grants.',
 };
 

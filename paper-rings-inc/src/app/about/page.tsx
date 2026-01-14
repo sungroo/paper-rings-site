@@ -14,7 +14,7 @@ export default function AboutUsPage() {
             transition={{ duration: 0.8 }}
             className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            About Paper Rings
+            About Paper Rings Inc.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +68,7 @@ export default function AboutUsPage() {
           className="mt-20 text-center text-gray-300"
         >
           <p className="text-lg leading-relaxed">
-            Since our founding in 2016, Paper Rings has been dedicated to guiding SMEs through their digital transformation journeys. With a deep understanding of the unique challenges and opportunities faced by small and medium-sized businesses, we have successfully completed 57+ digital transformations, helping our clients achieve operational efficiency, enhanced customer engagement, and sustainable growth.
+            Since our founding in 2016, Paper Rings Inc. has been dedicated to guiding SMEs through their digital transformation journeys. With a deep understanding of the unique challenges and opportunities faced by small and medium-sized businesses, we have successfully completed 57+ digital transformations, helping our clients achieve operational efficiency, enhanced customer engagement, and sustainable growth.
           </p>
           <p className="mt-4 text-lg leading-relaxed">
             Our team of expert IT consultants and UI/UX designers are committed to providing personalized solutions that not only meet your current needs but also position you for future success. We believe in building lasting partnerships, offering continuous support and strategic advice to ensure your business remains at the forefront of technological advancements.

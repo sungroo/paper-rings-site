@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 p-4 backdrop-blur-md bg-white/10 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold text-white">
-          Paper Rings
+          Paper Rings Inc.
         </Link>
         <div className="hidden md:flex space-x-6">
           <NavLink href="/" icon={<Home size={20} />} label="Home" />

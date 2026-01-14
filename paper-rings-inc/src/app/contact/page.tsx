@@ -42,7 +42,7 @@ export default function ContactUsPage() {
               </li>
               <li className="flex items-center">
                 <PhoneIcon className="h-6 w-6 text-brand-cyan mr-3" />
-                +1 (800) 123-4567
+                +1 (647) 875-9230
               </li>
               <li className="flex items-center">
                 <MapPinIcon className="h-6 w-6 text-brand-cyan mr-3" />
@@ -121,7 +121,7 @@ export default function ContactUsPage() {
               </div>
               <button
                 type="submit"
-                className="inline-flex justify-center rounded-md border border-transparent bg-gradient-rainbow py-2 px-4 text-sm font-medium text-white shadow-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-offset-2 transition-opacity"
+                className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
               >
                 Send Message
               </button>
