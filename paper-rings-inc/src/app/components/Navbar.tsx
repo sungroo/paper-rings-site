@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import logo from '../../../public/images/logo.png';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -25,7 +26,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-3 flex-shrink-0">
               <div className="relative w-10 h-10 flex-shrink-0">
                 <Image
-                  src="/images/logo.png"
+                  src={logo}
                   alt="Paper Rings Inc. Logo"
                   fill
                   className="object-contain"

@@ -2,8 +2,46 @@
 
 import { MailIcon, PhoneIcon, MapPinIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function ContactUsPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const isDevelopment = process.env.NODE_ENV === 'development';
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Double-check we're in development
+    if (process.env.NODE_ENV !== 'development') {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    const formData = new FormData(e.currentTarget);
+
+    // Simulate form submission for local development
+    setTimeout(() => {
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const message = formData.get('message') as string;
+
+      console.log('Contact form submission (local dev):', {
+        name,
+        email,
+        message,
+        timestamp: new Date().toISOString()
+      });
+
+      setSubmitMessage('Thank you for your message! This is a demo response for local development. When deployed to Netlify, submissions will go to your dashboard.');
+      setIsSubmitting(false);
+      e.currentTarget.reset();
+    }, 1000); // Simulate network delay
+  };
+
   return (
     <div className="relative overflow-hidden py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -59,23 +97,34 @@ export default function ContactUsPage() {
             className="lg:w-2/3 rounded-lg bg-slate-800 p-8 shadow-lg"
           >
             <h3 className="text-2xl font-semibold text-white">Send us a Message</h3>
-            <form 
-              name="contact" 
-              method="POST" 
-              data-netlify="true" 
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
               netlify-honeypot="bot-field"
-              action="/contact"
+              onSubmit={handleSubmit}
               className="mt-6 space-y-6"
             >
               {/* Hidden form name field for Netlify */}
               <input type="hidden" name="form-name" value="contact" />
-              
+
               {/* Hidden honeypot field for spam protection */}
               <div className="hidden">
                 <label>
                   Don't fill this out if you're human: <input name="bot-field" />
                 </label>
               </div>
+              {/* Hidden form name field for Netlify */}
+              {!isDevelopment && <input type="hidden" name="form-name" value="contact" />}
+
+              {/* Hidden honeypot field for spam protection */}
+              {!isDevelopment && (
+                <div className="hidden">
+                  <label>
+                    Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+                </div>
+              )}
               
               {/* Hidden _to field for email notifications (optional) */}
               <input type="hidden" name="_to" value="info@paperringsinc.com" />
@@ -121,10 +170,23 @@ export default function ContactUsPage() {
               </div>
               <button
                 type="submit"
-                className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                disabled={isDevelopment && isSubmitting}
+                className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isDevelopment && isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
+
+              {isDevelopment && submitMessage && (
+                <div className="mt-4 p-3 rounded-md text-sm bg-green-800 text-green-200">
+                  {submitMessage}
+                </div>
+              )}
+
+              {isDevelopment && (
+                <div className="mt-4 p-3 rounded-md text-sm bg-blue-900 text-blue-200">
+                  <strong>Development Mode:</strong> Form submissions are simulated locally. When deployed to Netlify, they will be stored in your dashboard.
+                </div>
+              )}
             </form>
           </motion.div>
         </div>
