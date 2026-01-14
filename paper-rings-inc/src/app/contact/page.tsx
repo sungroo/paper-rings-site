@@ -11,35 +11,39 @@ export default function ContactUsPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    e.stopPropagation();
-
-    // Double-check we're in development
-    if (process.env.NODE_ENV !== 'development') {
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitMessage('');
-
-    const formData = new FormData(e.currentTarget);
-
-    // Simulate form submission for local development
-    setTimeout(() => {
-      const name = formData.get('name') as string;
-      const email = formData.get('email') as string;
-      const message = formData.get('message') as string;
-
-      console.log('Contact form submission (local dev):', {
-        name,
-        email,
-        message,
-        timestamp: new Date().toISOString()
+  
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+  
+    // --- LOCAL DEVELOPMENT SIMULATION ---
+    if (process.env.NODE_ENV === 'development') {
+      setTimeout(() => {
+        console.log('Local submission:', Object.fromEntries(formData));
+        setSubmitMessage('Thank you! (Local Simulation)');
+        setIsSubmitting(false);
+        form.reset();
+      }, 1000);
+      return;
+    }
+  
+    // --- NETLIFY PRODUCTION SUBMISSION ---
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        // @ts-ignore
+        body: new URLSearchParams(formData).toString(),
       });
-
-      setSubmitMessage('Thank you for your message! This is a demo response for local development. When deployed to Netlify, submissions will go to your dashboard.');
+      
+      setSubmitMessage('Thank you! Your message has been sent successfully.');
+      form.reset();
+    } catch (error) {
+      setSubmitMessage('Oops! There was an error sending your message.');
+    } finally {
       setIsSubmitting(false);
-      e.currentTarget.reset();
-    }, 1000); // Simulate network delay
+    }
   };
 
   return (
@@ -114,17 +118,6 @@ export default function ContactUsPage() {
                   Don't fill this out if you're human: <input name="bot-field" />
                 </label>
               </div>
-              {/* Hidden form name field for Netlify */}
-              {!isDevelopment && <input type="hidden" name="form-name" value="contact" />}
-
-              {/* Hidden honeypot field for spam protection */}
-              {!isDevelopment && (
-                <div className="hidden">
-                  <label>
-                    Don't fill this out if you're human: <input name="bot-field" />
-                  </label>
-                </div>
-              )}
               
               {/* Hidden _to field for email notifications (optional) */}
               <input type="hidden" name="_to" value="info@paperringsinc.com" />

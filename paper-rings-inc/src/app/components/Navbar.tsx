@@ -31,6 +31,7 @@ export default function Navbar() {
                   fill
                   className="object-contain"
                   priority
+                  unoptimized
                 />
               </div>
               <div className="flex flex-col">
@@ -83,10 +84,11 @@ export default function Navbar() {
                     <Link href="/" className="flex items-center gap-2" onClick={() => close()}>
                       <div className="relative w-10 h-10 flex-shrink-0">
                         <Image
-                          src="/images/logo.png"
+                          src={logo} // Ensure this is the imported 'logo' variable from the top of your file
                           alt="Paper Rings Inc. Logo"
                           fill
                           className="object-contain"
+                          unoptimized
                         />
                       </div>
                       <div className="flex flex-col">
